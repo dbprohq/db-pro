@@ -1,0 +1,64 @@
+# DB Pro
+
+> DB Pro is a modern database management tool for developers. It provides a unified interface for working with multiple databases including PostgreSQL, MySQL, SQLite, Microsoft SQL Server, and MongoDB.
+
+## Quick Facts
+
+- Website: https://dbpro.app
+- Platforms: macOS, Windows, Linux
+- Pricing: Free plan available, $9.99/month, or $99 one-time purchase for lifetime license
+- Support: Discord (https://discord.gg/FKKF65msZY)
+
+## Operating System Support
+
+- macOS (Apple Silicon and Intel)
+- Windows (64-bit)
+- Linux (64-bit, AppImage and .deb)
+
+## Supported Databases
+
+- PostgreSQL
+- MySQL
+- SQLite
+- Microsoft SQL Server (MSSQL)
+- MongoDB
+- Supabase (built-in support)
+- Neon (built-in support)
+- Turso / libSQL (built-in support)
+- PlanetScale (built-in support)
+
+## Key Features
+
+- SQL Editor: Syntax highlighting, autocomplete, multi-tab queries, query history
+- Data Browser: View, filter, sort, and edit rows with inline editing
+- Schema Explorer: Visual navigation of tables, views, indexes, and relationships
+- Import/Export: CSV and JSON support with column mapping
+- SSH Tunneling: Secure connections to remote databases
+- Credential Storage: Integration with system keychain (macOS Keychain, Windows Credential Manager)
+- Saved Queries: Save and version queries for reuse
+
+## Free Plan Includes
+
+- Full SQL editor
+- Data browser
+- Schema explorer
+- Query history
+- Unlimited local database connections
+- No time limits or trial restrictions
+
+## Comparisons
+
+- vs DataGrip: $99 lifetime vs $199/year subscription. Built-in support for Supabase, Neon, Turso, PlanetScale.
+- vs TablePlus: $99 lifetime vs $89 lifetime. Similar feature set, DB Pro has built-in cloud database provider support.
+- vs Navicat: $99 lifetime for all databases vs $199-699 per database type.
+- vs DBeaver: Cleaner UI, more streamlined experience. DBeaver is free/open source with more features.
+- vs Sequel Pro: DB Pro is actively maintained, cross-platform, supports more databases.
+- vs phpMyAdmin: Desktop app, no web server required, supports multiple database types.
+
+## Links
+
+- Download: https://dbpro.app/download
+- Pricing: https://dbpro.app/#pricing
+- Documentation: https://dbpro.app/help
+- Blog: https://dbpro.app/blog
+- FAQ: https://dbpro.app/faq

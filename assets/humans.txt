@@ -1,0 +1,30 @@
+/* TEAM */
+
+Name: Jay
+Role: Co-founder
+
+Name: JD
+Role: Co-founder
+
+Location: United Kingdom
+
+/* DB PRO */
+
+A modern database desktop client for macOS, Windows, Linux.
+
+Databases: PostgreSQL, MySQL, SQLite, SQL Server, MongoDB
+Providers: Supabase, Neon, Turso, PlanetScale
+
+Features: SQL editor, data browser, schema explorer,
+query history, SSH tunneling, CSV/JSON import/export
+
+/* WEBSITE */
+
+Framework: Next.js
+UI: React, Tailwind CSS, Radix UI
+Hosting: Vercel
+
+/* SITE */
+
+Last update: 2025-01-15
+Standards: HTML5, CSS3

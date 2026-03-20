@@ -3,7 +3,8 @@
 <p align="center">
   <a href="https://dbpro.app"><img src="https://img.shields.io/badge/Website-dbpro.app-4F46E5?style=for-the-badge" alt="Website" /></a>&nbsp;
   <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux%20%7C%20Web-6366F1?style=for-the-badge" alt="Platform" />&nbsp;
-  <img src="https://img.shields.io/badge/Databases-12%20Supported-06B6D4?style=for-the-badge" alt="Databases" />
+  <img src="https://img.shields.io/badge/Databases-12%20Supported-06B6D4?style=for-the-badge" alt="Databases" />&nbsp;
+  <a href="https://discord.com/invite/FKKF65msZY"><img src="https://img.shields.io/discord/1411997487018807430?style=for-the-badge&logo=discord&logoColor=white&label=Discord&color=5865F2" alt="Discord" /></a>
 </p>
 
 <p align="center">
@@ -13,7 +14,8 @@
 <p align="center">
   <a href="https://dbpro.app">Website</a> &middot;
   <a href="https://dbpro.app/download">Download</a> &middot;
-  <a href="https://www.dbpro.app/help/">Documentation</a></p>
+  <a href="https://www.dbpro.app/help/">Documentation</a> &middot;
+  <a href="https://discord.com/invite/FKKF65msZY">Discord</a></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/OpenAI-supported-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI" />&nbsp;
@@ -303,6 +305,7 @@ Every query is automatically saved. Search through your history and re-run past 
 <p align="center">
   <a href="https://dbpro.app">Website</a> &middot;
   <a href="https://www.dbpro.app/help/">Docs</a> &middot;
+  <a href="https://discord.com/invite/FKKF65msZY">Discord</a> &middot;
   <a href="https://x.com/dbproapp">Twitter</a>
 </p>
 

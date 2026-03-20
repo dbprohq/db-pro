@@ -15,6 +15,14 @@
   <a href="https://dbpro.app/download">Download</a> &middot;
   <a href="https://www.dbpro.app/help/">Documentation</a></p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/OpenAI-supported-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI" />&nbsp;
+  <img src="https://img.shields.io/badge/Anthropic-supported-D97757?style=flat-square&logo=anthropic&logoColor=white" alt="Anthropic" />&nbsp;
+  <img src="https://img.shields.io/badge/Google-supported-4285F4?style=flat-square&logo=google&logoColor=white" alt="Google" />&nbsp;
+  <img src="https://img.shields.io/badge/Ollama-supported-000000?style=flat-square&logo=ollama&logoColor=white" alt="Ollama" />&nbsp;
+  <img src="https://img.shields.io/badge/OpenRouter-supported-6366F1?style=flat-square" alt="OpenRouter" />
+</p>
+
 <br>
 
 <p align="center">
@@ -100,14 +108,6 @@ Ask questions in plain English and let AI generate the SQL for you. Bring your o
 
 <p align="center">
   <img src="assets/ai-hero.webp" alt="AI-Powered Queries" width="100%" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/OpenAI-supported-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI" />&nbsp;
-  <img src="https://img.shields.io/badge/Anthropic-supported-D97757?style=flat-square&logo=anthropic&logoColor=white" alt="Anthropic" />&nbsp;
-  <img src="https://img.shields.io/badge/Google-supported-4285F4?style=flat-square&logo=google&logoColor=white" alt="Google" />&nbsp;
-  <img src="https://img.shields.io/badge/Ollama-supported-000000?style=flat-square&logo=ollama&logoColor=white" alt="Ollama" />&nbsp;
-  <img src="https://img.shields.io/badge/OpenRouter-supported-6366F1?style=flat-square" alt="OpenRouter" />
 </p>
 
 <details>

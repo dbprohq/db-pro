@@ -13,9 +13,7 @@
 <p align="center">
   <a href="https://dbpro.app">Website</a> &middot;
   <a href="https://dbpro.app/download">Download</a> &middot;
-  <a href="https://dbpro.app/docs">Documentation</a> &middot;
-  <a href="https://dbpro.app/changelog">Changelog</a>
-</p>
+  <a href="https://www.dbpro.app/help/">Documentation</a></p>
 
 <br>
 
@@ -304,7 +302,7 @@ Every query is automatically saved. Search through your history and re-run past 
 
 <p align="center">
   <a href="https://dbpro.app">Website</a> &middot;
-  <a href="https://dbpro.app/docs">Docs</a> &middot;
+  <a href="https://www.dbpro.app/help/">Docs</a> &middot;
   <a href="https://x.com/dbproapp">Twitter</a>
 </p>
 

@@ -1,7 +1,7 @@
 <h1 align="center">DB Pro Studio</h1>
 
 <p align="center">
-  <strong>Self-host DB Pro in your browser — the modern database workbench, running on your own infrastructure.</strong>
+  <strong>Self-host DB Pro in your browser. The modern database workbench, running on your own infrastructure.</strong>
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
   <img src="assets/dashboard-hero.webp" alt="DB Pro Studio" width="100%" />
 </p>
 
-**DB Pro Studio** is the self-hostable, browser build of [DB Pro](https://dbpro.app). Run it on your own server and get the full workbench — data browser, SQL editor, visual schema diagrams, dashboards, and built-in AI — for Postgres, MySQL/MariaDB, SQLite, SQL Server, ClickHouse, MongoDB, Redis, Turso and more. Your database credentials and data stay on **your** infrastructure.
+**DB Pro Studio** is the self-hostable, browser build of [DB Pro](https://dbpro.app). Run it on your own server and get the full workbench (data browser, SQL editor, visual schema diagrams, dashboards, and built-in AI) for Postgres, MySQL/MariaDB, SQLite, SQL Server, ClickHouse, MongoDB, Redis, Turso and more. Your database credentials and data stay on **your** infrastructure.
 
 > Prefer a native app? Download DB Pro for macOS, Windows, and Linux at [dbpro.app/download](https://dbpro.app/download).
 
@@ -66,7 +66,7 @@ Configure via environment variables:
 | `DEMO_MODE` | `false` | When `true`, seeds a read-only demo database to explore. |
 
 **Back up your data directory** (the Docker volume or `~/.dbpro-studio`). It
-contains both the database and the encryption key — **losing the encryption key
+contains both the database and the encryption key. **Losing the encryption key
 means saved connection credentials can no longer be decrypted.** To pin the key
 explicitly, set `ENCRYPTION_KEY` yourself and keep it somewhere safe.
 
@@ -82,7 +82,7 @@ over HTTPS for secure session cookies.
 - **Docker:** `docker pull ghcr.io/dbprohq/dbpro-studio:latest`, then recreate the container (your `-v dbpro-studio:/data` volume carries your data across).
 - **Node:** download the latest tarball and re-extract over your install; `~/.dbpro-studio` is untouched.
 
-Studio versions track the DB Pro desktop app — see the [Releases](https://github.com/dbprohq/db-pro/releases) page.
+Studio versions track the DB Pro desktop app. See the [Releases](https://github.com/dbprohq/db-pro/releases) page.
 
 ---
 

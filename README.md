@@ -1,246 +1,123 @@
-<h1 align="center">DB Pro</h1>
+<h1 align="center">DB Pro Studio</h1>
+
+<p align="center">
+  <strong>Self-host DB Pro in your browser — the modern database workbench, running on your own infrastructure.</strong>
+</p>
 
 <p align="center">
   <a href="https://dbpro.app"><img src="https://img.shields.io/badge/Website-dbpro.app-4F46E5?style=for-the-badge" alt="Website" /></a>&nbsp;
-  <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux%20%7C%20Web-6366F1?style=for-the-badge" alt="Platform" />&nbsp;
+  <a href="https://github.com/dbprohq/db-pro/releases/latest"><img src="https://img.shields.io/badge/Docker-ghcr.io%2Fdbprohq%2Fdbpro--studio-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker image" /></a>&nbsp;
   <img src="https://img.shields.io/badge/Databases-12%20Supported-06B6D4?style=for-the-badge" alt="Databases" />&nbsp;
   <a href="https://discord.com/invite/FKKF65msZY"><img src="https://img.shields.io/discord/1411997487018807430?style=for-the-badge&logo=discord&logoColor=white&label=Discord&color=5865F2" alt="Discord" /></a>
 </p>
 
 <p align="center">
-  <strong>Query, explore, and manage your databases with a beautiful desktop app, collaborative web platform, and built-in AI.</strong>
+  <img src="assets/dashboard-hero.webp" alt="DB Pro Studio" width="100%" />
 </p>
 
-<p align="center">
-  <a href="https://dbpro.app">Website</a> &middot;
-  <a href="https://dbpro.app/download">Download</a> &middot;
-  <a href="https://www.dbpro.app/help/">Documentation</a> &middot;
-  <a href="https://discord.com/invite/FKKF65msZY">Discord</a></p>
+**DB Pro Studio** is the self-hostable, browser build of [DB Pro](https://dbpro.app). Run it on your own server and get the full workbench — data browser, SQL editor, visual schema diagrams, dashboards, and built-in AI — for Postgres, MySQL/MariaDB, SQLite, SQL Server, ClickHouse, MongoDB, Redis, Turso and more. Your database credentials and data stay on **your** infrastructure.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/OpenAI-supported-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI" />&nbsp;
-  <img src="https://img.shields.io/badge/Anthropic-supported-D97757?style=flat-square&logo=anthropic&logoColor=white" alt="Anthropic" />&nbsp;
-  <img src="https://img.shields.io/badge/Google-supported-4285F4?style=flat-square&logo=google&logoColor=white" alt="Google" />&nbsp;
-  <img src="https://img.shields.io/badge/Ollama-supported-000000?style=flat-square&logo=ollama&logoColor=white" alt="Ollama" />&nbsp;
-  <img src="https://img.shields.io/badge/OpenRouter-supported-6366F1?style=flat-square" alt="OpenRouter" />
-</p>
-
-<br>
-
-<p align="center">
-  <img src="assets/dashboard-hero.webp" alt="DB Pro Screenshot" width="100%" />
-</p>
+> Prefer a native app? Download DB Pro for macOS, Windows, and Linux at [dbpro.app/download](https://dbpro.app/download).
 
 ---
 
-## Features
+## Quick start
+
+### Docker (recommended)
+
+```bash
+docker run -d --name dbpro-studio \
+  -p 4000:3100 \
+  -v dbpro-studio:/data \
+  ghcr.io/dbprohq/dbpro-studio:latest
+```
+
+Then open **http://localhost:4000** and create your admin account on first visit.
+
+The `dbpro-studio` volume holds your SQLite database and a generated encryption
+key, so your data and saved connections survive restarts and upgrades.
+
+### Node (no Docker)
+
+Requires **Node.js 20+**.
+
+```bash
+curl -fsSL https://github.com/dbprohq/db-pro/releases/latest/download/dbpro-studio.tar.gz | tar xz
+npm install --omit=dev
+node bin/cli.js
+```
+
+Then open **http://localhost:3100**. Data and a generated encryption key live
+under `~/.dbpro-studio`.
+
+Grab a specific version from the [Releases](https://github.com/dbprohq/db-pro/releases) page.
+
+---
+
+## Configuration
+
+Configure via environment variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `3100` | Port the server listens on. |
+| `DATABASE_PATH` | `~/.dbpro-studio/dbpro.db` (Node) · `/data/dbpro.db` (Docker) | SQLite/libSQL file that stores users, saved connections, queries, dashboards, etc. |
+| `ENCRYPTION_KEY` | auto-generated | 64-char hex key used to encrypt saved connection credentials at rest. If unset, one is generated and persisted next to the database as `.encryption-key`. |
+| `DEMO_MODE` | `false` | When `true`, seeds a read-only demo database to explore. |
+
+**Back up your data directory** (the Docker volume or `~/.dbpro-studio`). It
+contains both the database and the encryption key — **losing the encryption key
+means saved connection credentials can no longer be decrypted.** To pin the key
+explicitly, set `ENCRYPTION_KEY` yourself and keep it somewhere safe.
+
+### Behind a reverse proxy / HTTPS
+
+Studio serves the app and API on one port and detects HTTPS from the
+`X-Forwarded-Proto` header, so it works behind nginx, Caddy, or a load balancer
+terminating TLS. Forward traffic to the container's port (`3100`) and serve it
+over HTTPS for secure session cookies.
+
+## Updating
+
+- **Docker:** `docker pull ghcr.io/dbprohq/dbpro-studio:latest`, then recreate the container (your `-v dbpro-studio:/data` volume carries your data across).
+- **Node:** download the latest tarball and re-extract over your install; `~/.dbpro-studio` is untouched.
+
+Studio versions track the DB Pro desktop app — see the [Releases](https://github.com/dbprohq/db-pro/releases) page.
+
+---
+
+## What's inside
 
 ### Data Browser
+Filter, sort, and inline-edit across millions of rows with a spreadsheet-like interface, plus a record Inspector.
 
-Filter, sort, and inline-edit across millions of rows with a spreadsheet-like interface. Inspect individual records with the built-in Inspector panel.
-
-<p align="center">
-  <img src="assets/data-hero.webp" alt="Data Browser" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/data-browser-feature-1.webp" alt="Data Browser - Filtering" width="49%" />
-  <img src="assets/data-browser-feature-2.webp" alt="Data Browser - Sorting" width="49%" />
-</p>
-<p>
-  <img src="assets/data-browser-feature-3.webp" alt="Data Browser - Inline Editing" width="49%" />
-  <img src="assets/data-browser-feature-4.webp" alt="Data Browser - Bulk Actions" width="49%" />
-</p>
-</details>
-
-<br>
+<p align="center"><img src="assets/data-hero.webp" alt="Data Browser" width="100%" /></p>
 
 ### SQL Editor
+Write and run queries with syntax highlighting, autocomplete, and instant results. Save your favorites.
 
-Write and run queries with full syntax highlighting, intelligent autocomplete, and instant results. Save your favorite queries for quick access.
+<p align="center"><img src="assets/editor-hero.webp" alt="SQL Editor" width="100%" /></p>
 
-<p align="center">
-  <img src="assets/editor-hero.webp" alt="SQL Editor" width="100%" />
-</p>
+### Visual Schema & Diagrams
+Explore your database structure and design ER diagrams to understand relationships at a glance.
 
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/editor-feature-1.webp" alt="SQL Editor - Syntax Highlighting" width="49%" />
-  <img src="assets/editor-feature-2.webp" alt="SQL Editor - Autocomplete" width="49%" />
-</p>
-<p>
-  <img src="assets/editor-feature-3.webp" alt="SQL Editor - Results" width="49%" />
-  <img src="assets/editor-feature-4.webp" alt="SQL Editor - Saved Queries" width="49%" />
-</p>
-</details>
-
-<br>
-
-### Visual Schema Explorer
-
-Navigate your database structure with an interactive, visual schema browser. Understand relationships at a glance.
-
-<p align="center">
-  <img src="assets/diagram-hero.webp" alt="Visual Schema Explorer" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/visual-schema-explorer-feature-1.webp" alt="Schema Explorer - Overview" width="49%" />
-  <img src="assets/visual-schema-explorer-feature-2.webp" alt="Schema Explorer - Relationships" width="49%" />
-</p>
-<p>
-  <img src="assets/visual-schema-explorer-feature-3.webp" alt="Schema Explorer - Details" width="49%" />
-  <img src="assets/visual-schema-explorer-feature-4.webp" alt="Schema Explorer - Navigation" width="49%" />
-</p>
-</details>
-
-<br>
+<p align="center"><img src="assets/diagram-hero.webp" alt="Visual Schema Explorer" width="100%" /></p>
 
 ### Built-in AI
+Ask questions in plain English and let AI write the SQL. Bring your own API key (OpenAI, Anthropic, Google, Ollama, OpenRouter).
 
-Ask questions in plain English and let AI generate the SQL for you. Bring your own API key from your preferred provider.
+<p align="center"><img src="assets/ai-hero.webp" alt="AI-Powered Queries" width="100%" /></p>
 
-<p align="center">
-  <img src="assets/ai-hero.webp" alt="AI-Powered Queries" width="100%" />
-</p>
+### Dashboards
+Build dashboards to visualize your data and track key metrics, and share them with your team.
 
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/ai-feature-1.webp" alt="AI - Natural Language" width="49%" />
-  <img src="assets/ai-feature-2.webp" alt="AI - Query Generation" width="49%" />
-</p>
-<p>
-  <img src="assets/ai-feature-3.webp" alt="AI - Results" width="49%" />
-  <img src="assets/ai-feature-4.webp" alt="AI - Providers" width="49%" />
-</p>
-</details>
+<p align="center"><img src="assets/dashboard-hero.webp" alt="Custom Dashboards" width="100%" /></p>
 
-<br>
-
-### Custom Dashboards
-
-Build dashboards to visualize your data and track key metrics. Share them with your team via public links.
-
-<p align="center">
-  <img src="assets/dashboard-hero.webp" alt="Custom Dashboards" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/dashboards-feature-1.webp" alt="Dashboards - Widgets" width="49%" />
-  <img src="assets/dashboards-feature-2.webp" alt="Dashboards - Charts" width="49%" />
-</p>
-<p>
-  <img src="assets/dashboards-feature-3.webp" alt="Dashboards - Metrics" width="49%" />
-  <img src="assets/dashboards-feature-4.webp" alt="Dashboards - Sharing" width="49%" />
-</p>
-</details>
-
-<br>
-
-### Inspector
-
-Examine individual records in detail with the Inspector panel. View relationships, metadata, and edit values in-place.
-
-<p align="center">
-  <img src="assets/inspector-hero.webp" alt="Inspector" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/inspector-feature-1.webp" alt="Inspector - Record View" width="49%" />
-  <img src="assets/inspector-feature-2.webp" alt="Inspector - Relationships" width="49%" />
-</p>
-<p>
-  <img src="assets/inspector-feature-3.webp" alt="Inspector - Metadata" width="49%" />
-  <img src="assets/inspector-feature-4.webp" alt="Inspector - Editing" width="49%" />
-</p>
-</details>
-
-<br>
-
-### Import & Export
-
-Import and export data in CSV and JSON formats. Move data between databases or share it with your team effortlessly.
-
-<p align="center">
-  <img src="assets/import-export-hero.webp" alt="Import & Export" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/import-export-feature-1.webp" alt="Import - CSV" width="49%" />
-  <img src="assets/import-export-feature-2.webp" alt="Import - JSON" width="49%" />
-</p>
-<p>
-  <img src="assets/import-export-feature-3.webp" alt="Export - Options" width="49%" />
-  <img src="assets/import-export-feature-4.webp" alt="Export - Preview" width="49%" />
-</p>
-</details>
-
-<br>
-
-### Power Features
-
-Multi-tab workflows, table tagging, SSH tunnel connections, and more. Everything you need for a professional database workflow.
-
-<p align="center">
-  <img src="assets/power-features-hero.webp" alt="Power Features" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/power-features-feature-1.webp" alt="Power Features - Multi-tab" width="49%" />
-  <img src="assets/power-features-feature-2.webp" alt="Power Features - Tagging" width="49%" />
-</p>
-<p>
-  <img src="assets/power-features-feature-3.webp" alt="Power Features - SSH" width="49%" />
-  <img src="assets/power-features-feature-4.webp" alt="Power Features - Settings" width="49%" />
-</p>
-</details>
-
-<br>
-
-### Query History & Logs
-
-Every query is automatically saved. Search through your history and re-run past queries with a single click.
-
-<p align="center">
-  <img src="assets/query-logs-hero.webp" alt="Query History & Logs" width="100%" />
-</p>
-
-<details>
-<summary>See more</summary>
-<br>
-<p>
-  <img src="assets/logs-feature-1.webp" alt="Logs - History" width="49%" />
-  <img src="assets/logs-feature-2.webp" alt="Logs - Search" width="49%" />
-</p>
-</details>
-
-<br>
+Also included: import/export (CSV/JSON), query history & logs, table tagging, multi-tab workflows, and SSH-tunnel connections.
 
 ---
 
-## Supported Databases
+## Supported databases
 
 <p align="center">
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />&nbsp;
@@ -262,53 +139,16 @@ Every query is automatically saved. Search through your history and re-run past 
 
 <br>
 
-## Available Everywhere
-
 <p align="center">
-  <img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" />&nbsp;
-  <img src="https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" />&nbsp;
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />&nbsp;
-  <img src="https://img.shields.io/badge/Web%20Browser-4F46E5?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Browser" />
+  Need SSO/SAML, audit logs, and an SLA? See <a href="https://dbpro.app/pricing">Enterprise</a>.
 </p>
-
-<br>
-
-## Pricing
-
-| Plan | Price | Connections | Highlights |
-|------|-------|:-----------:|------------|
-| **Free** | $0 forever | 2 | 5 saved queries, 2 dashboards, 1 device |
-| **Solo** | $79 one-time _or_ $9.99/mo | Unlimited | All features, 2 devices |
-| **Team** | $14/seat/mo | Unlimited | Browser access, collaboration, shared queries & dashboards |
-| **Enterprise** | Custom | Unlimited | Self-hosted, SSO/SAML, audit logs, SLA |
-
-<p align="center">
-  <a href="https://dbpro.app/pricing"><strong>View Full Pricing &rarr;</strong></a>
-</p>
-
-<br>
-
-## Getting Started
-
-1. **Download** the app from [dbpro.app](https://dbpro.app/download) or use the [web version](https://dbpro.app)
-2. **Connect** your database in one click
-3. **Start querying** — browse data, write SQL, or ask AI
-
-<p align="center">
-  <img src="assets/dbpro-poster.jpg" alt="DB Pro - Getting Started" width="600" />
-</p>
-
-<br>
 
 ---
 
 <p align="center">
   <a href="https://dbpro.app">Website</a> &middot;
+  <a href="https://dbpro.app/download">Desktop app</a> &middot;
   <a href="https://www.dbpro.app/help/">Docs</a> &middot;
   <a href="https://discord.com/invite/FKKF65msZY">Discord</a> &middot;
   <a href="https://x.com/dbproapp">Twitter</a>
-</p>
-
-<p align="center">
-  Built with care for developers and data teams.
 </p>
